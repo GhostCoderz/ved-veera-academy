@@ -2,7 +2,9 @@ package com.ghostcoderz.vedveeracoaching.controller;
 
 import com.ghostcoderz.vedveeracoaching.entity.SecurityUser;
 import com.ghostcoderz.vedveeracoaching.service.UserService;
+import com.ghostcoderz.vedveeracoaching.util.email.EmailSenderService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -11,8 +13,11 @@ public class HomeController {
 
     private final UserService userService;
 
-    public HomeController(UserService userService) {
+    private final EmailSenderService emailSenderService;
+
+    public HomeController(UserService userService, EmailSenderService emailSenderService) {
         this.userService = userService;
+        this.emailSenderService = emailSenderService;
     }
 
     @GetMapping("/")
@@ -41,14 +46,19 @@ public class HomeController {
         return model;
     }
 
-//    @GetMapping("/user")
-//    public String user() {
-//        return ("<h1>Welcome SecurityUser</h1>");
-//    }
-//
-//    @GetMapping("/admin")
-//    public String admin() {
-//        return ("<h1>Welcome Admin</h1>");
-//    }
+    @GetMapping("/sendEmail")
+    public ModelAndView sendEmail(@RequestParam(name = "email") String email){
+
+        emailSenderService.sendSimpleEmail(
+                email,
+                "Testing email from VedVeera Academy",
+                "This is s test email from VedVeera Academy. " +
+                        "Please let us know once you get the email.");
+
+        ModelAndView model = new ModelAndView();
+        model.setViewName("email");
+
+        return model;
+    }
 
 }

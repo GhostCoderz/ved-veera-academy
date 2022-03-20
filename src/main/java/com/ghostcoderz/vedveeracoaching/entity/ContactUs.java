@@ -1,6 +1,6 @@
 package com.ghostcoderz.vedveeracoaching.entity;
 
-import com.ghostcoderz.vedveeracoaching.constant.CONTACT_STATUS;
+import com.ghostcoderz.vedveeracoaching.util.constant.CONTACT_STATUS;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
