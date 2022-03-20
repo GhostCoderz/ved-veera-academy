@@ -7,14 +7,13 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Setter
 @Getter
-@ToString
 @Entity
 @Table(name = "security_user")
 public class SecurityUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long user_id;
+    private long secure_id;
     private String userName;
     private String password;
     @NotNull
