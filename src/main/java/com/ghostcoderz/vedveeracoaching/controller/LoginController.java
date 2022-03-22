@@ -22,4 +22,11 @@ public class LoginController {
         return model;
     }
 
+    @GetMapping("/dashboard")
+    public ModelAndView displayDashboard(){
+        ModelAndView model = new ModelAndView();
+        model.setViewName("dashboard");
+        return model;
+    }
+
 }
