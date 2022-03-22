@@ -18,6 +18,7 @@ public class Course {
     private long course_id;
     private String course_name;
     private String description;
+    @Column(nullable = false)
     private LocalDateTime create_dt;
 
     @ManyToOne

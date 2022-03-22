@@ -14,13 +14,14 @@ public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(unique = true)
     private int address_id;
     private String city;
     private String state;
     private String country;
 
     @OneToOne
-    @JoinColumn( foreignKey = @ForeignKey(), name = "app_user_id")
+    @JoinColumn( foreignKey = @ForeignKey(), name = "app_user_id", updatable = false)
     private AppUser appUser;
 
 }
