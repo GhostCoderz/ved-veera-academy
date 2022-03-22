@@ -4,7 +4,6 @@ import com.ghostcoderz.vedveeracoaching.entity.SecurityUser;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,8 +26,9 @@ public class MyUserDetails implements UserDetails {
         this.username=security_user.getUserName();
         this.password=security_user.getPassword();
         this.active = security_user.isActive();
-        this.authorities = Arrays.stream(security_user.getRoles().split(","))
-                .map(SimpleGrantedAuthority::new).collect(Collectors.toList());
+        this.authorities = security_user.getRoles().stream()
+                .map(role -> new SimpleGrantedAuthority(role.getRole_name()))
+                .collect(Collectors.toList());
     }
 
     @Override

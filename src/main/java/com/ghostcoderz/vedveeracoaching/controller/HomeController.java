@@ -1,7 +1,5 @@
 package com.ghostcoderz.vedveeracoaching.controller;
 
-import com.ghostcoderz.vedveeracoaching.entity.SecurityUser;
-import com.ghostcoderz.vedveeracoaching.service.UserService;
 import com.ghostcoderz.vedveeracoaching.util.email.EmailSenderService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,12 +9,9 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class HomeController {
 
-    private final UserService userService;
-
     private final EmailSenderService emailSenderService;
 
-    public HomeController(UserService userService, EmailSenderService emailSenderService) {
-        this.userService = userService;
+    public HomeController(EmailSenderService emailSenderService) {
         this.emailSenderService = emailSenderService;
     }
 
@@ -25,11 +20,6 @@ public class HomeController {
         ModelAndView model = new ModelAndView();
         model.setViewName("index");
         return model;
-    }
-
-    @GetMapping("/addAdminUser")
-    public SecurityUser addAdminUser(){
-        return userService.saveAdminUser();
     }
 
     @GetMapping("/contact-us")
