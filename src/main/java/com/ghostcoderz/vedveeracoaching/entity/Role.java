@@ -16,7 +16,7 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int role_id;
-    @Column(nullable = false)
+    @Column(nullable = false, updatable = false)
     private String role_name;
 
     public Role(int role_id, APP_ROLE role_name) {

@@ -1,12 +1,10 @@
 package com.ghostcoderz.vedveeracoaching.entity;
 
 import com.sun.istack.NotNull;
-import lombok.*;
-import org.hibernate.annotations.*;
-import org.hibernate.annotations.CascadeType;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import javax.persistence.*;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import java.util.List;
 
 @NoArgsConstructor
@@ -17,7 +15,7 @@ import java.util.List;
 public class SecurityUser {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     private long secure_id;
     @Column(nullable = false)
@@ -27,10 +25,13 @@ public class SecurityUser {
     @NotNull
     private boolean active;
 
+    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinColumn(foreignKey = @ForeignKey, name = "app_user_id")
+    private AppUser appUser;
+
     // Fetch type eager as Spring security is not able to load roles lazily
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "secure_id")
-    @Cascade(CascadeType.ALL)
     private List<Role> roles;
 
     public SecurityUser(long secure_id, String userName, String password, boolean active, List<Role> roles) {
@@ -45,6 +46,15 @@ public class SecurityUser {
         this.userName = userName;
         this.password = password;
         this.active = active;
+        this.roles = roles;
+    }
+
+    public SecurityUser(long secure_id, String userName, String password, boolean active, AppUser appUser, List<Role> roles) {
+        this.secure_id = secure_id;
+        this.userName = userName;
+        this.password = password;
+        this.active = active;
+        this.appUser = appUser;
         this.roles = roles;
     }
 

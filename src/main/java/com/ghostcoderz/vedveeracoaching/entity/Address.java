@@ -3,13 +3,16 @@ package com.ghostcoderz.vedveeracoaching.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @NoArgsConstructor
 @Setter
 @Getter
 @Entity(name = "ADDRESS")
+@Validated
 public class Address {
 
     @Id
