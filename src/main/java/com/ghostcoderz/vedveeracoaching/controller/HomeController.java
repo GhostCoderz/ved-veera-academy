@@ -1,54 +1,51 @@
 package com.ghostcoderz.vedveeracoaching.controller;
 
-import com.ghostcoderz.vedveeracoaching.util.email.EmailSenderService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.ghostcoderz.vedveeracoaching.entity.ContactUs;
+import com.ghostcoderz.vedveeracoaching.util.email.EmailSender;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.validation.Valid;
+
+import static com.ghostcoderz.vedveeracoaching.util.CommonUtility.generateModeAndView;
 
 @RestController
 public class HomeController {
 
-    private final EmailSenderService emailSenderService;
+    private final EmailSender emailSender;
 
-    public HomeController(EmailSenderService emailSenderService) {
-        this.emailSenderService = emailSenderService;
+    public HomeController(EmailSender emailSender) {
+        this.emailSender = emailSender;
     }
 
     @GetMapping("/")
     public ModelAndView displayHomepage(){
-        ModelAndView model = new ModelAndView();
-        model.setViewName("index");
-        return model;
+        return generateModeAndView("index");
     }
 
     @GetMapping("/contact-us")
     public ModelAndView displayContactUsPage(){
-        ModelAndView model = new ModelAndView();
-        model.setViewName("contactUs");
-        return model;
+        return generateModeAndView("contactUs");
     }
+
+    @PostMapping(value = "/contact-us", consumes = { MediaType.APPLICATION_FORM_URLENCODED_VALUE })
+    public ModelAndView displayContactUsPage( ContactUs contactUs){
+
+        emailSender.sendTemplateContactEmail(
+                contactUs.getFullName(),
+                contactUs.getEmail(),
+                contactUs.getMessage(),
+                contactUs.getCourse(),
+                contactUs.getContactNum());
+
+        return generateModeAndView("contactUs");
+    }
+
 
     @GetMapping("/about")
     public ModelAndView displayAboutUsPage(){
-        ModelAndView model = new ModelAndView();
-        model.setViewName("aboutUs");
-        return model;
-    }
-
-    @GetMapping("/sendEmail")
-    public ModelAndView sendEmail(@RequestParam(name = "email") String email){
-
-        emailSenderService.sendSimpleEmail(
-                email,
-                "Testing email from VedVeera Academy",
-                "This is s test email from VedVeera Academy. " +
-                        "Please let us know once you get the email.");
-
-        ModelAndView model = new ModelAndView();
-        model.setViewName("email");
-
-        return model;
+        return generateModeAndView("aboutUs");
     }
 
 }

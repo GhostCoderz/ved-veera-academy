@@ -1,5 +1,6 @@
 package com.ghostcoderz.vedveeracoaching.service;
 
+import com.ghostcoderz.vedveeracoaching.entity.AppUser;
 import com.ghostcoderz.vedveeracoaching.entity.SecurityUser;
 import com.ghostcoderz.vedveeracoaching.respository.SecurityUserRepository;
 import com.ghostcoderz.vedveeracoaching.security.SecurityConfiguration;
@@ -15,28 +16,33 @@ import java.util.List;
 
 @Configuration
 @Service
-public class UserService {
+public class SecurityUserService {
 
-    private final SecurityUserRepository userRepository;
+    private final SecurityUserRepository securityUserRepository;
 
     private final BCryptPasswordEncoder passwordEncoder;
 
     private final Logger logger= LoggerFactory.getLogger(this.getClass());
 
-    public UserService(SecurityUserRepository userRepository) {
-        this.userRepository = userRepository;
+    public SecurityUserService(SecurityUserRepository securityUserRepository) {
+        this.securityUserRepository = securityUserRepository;
         this.passwordEncoder = (BCryptPasswordEncoder) SecurityConfiguration.getPasswordEncoder();
     }
 
-    public void saveUser() {
-    }
-
-    public SecurityUser saveAdminUser(){
+    public void saveAdminUser(){
         String encodedPassword = passwordEncoder.encode("pass");
         List<Role> roles = List.of(new Role(APP_ROLE.ADMIN), new Role(APP_ROLE.USER));
         SecurityUser user = new SecurityUser("admin", encodedPassword , true, roles );
         logger.info("Added Admin User to the Security Users Table");
-        return userRepository.save(user);
+        saveUser(user);
+    }
+
+    public void saveUser( SecurityUser user){
+        long secure_id = user.getSecure_id();
+        String userName = user.getUserName();
+
+        user.setAppUser(new AppUser(secure_id, userName));
+        securityUserRepository.save(user);
     }
 
 }

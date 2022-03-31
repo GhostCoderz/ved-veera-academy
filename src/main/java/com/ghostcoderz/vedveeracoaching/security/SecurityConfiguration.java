@@ -43,7 +43,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .defaultSuccessUrl("/dashboard", true)
-                .failureUrl("/login/error")
+                .failureForwardUrl("/login/error")
 
                 // Configuring the Logout Functionality
                 .and().logout().logoutUrl("/logout")
