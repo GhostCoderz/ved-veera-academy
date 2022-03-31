@@ -1,0 +1,28 @@
+<!doctype html>
+<html xmlns:th="htts://thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ContactUs Notification for Academy</title>
+</head>
+
+<body>
+    <h1>VedVeera Academy</h1>
+
+    <p>
+        <span th:text="${userName}">Name</span>
+        has sent a feedback for VedVeera Academy. Please review. <br>
+        Email : <span th:text="${userEmail}">Email</span> <br>
+<!--        <div th:if="${userCourse != null">-->
+            Course : <span th:text="${userCourse}">Course</span> <br>
+<!--        </div>-->
+        Contact Number : <span th:text="${userContactNum}">Contact Number</span> <br>
+        Message : <span th:text="${userMessage}">Message</span> <br>
+    </p>
+
+</body>
+
+</html>

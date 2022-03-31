@@ -1,0 +1,154 @@
+/* https://colorhunt.co/palette/03045e00b4d890e0efcaf0f8 */
+
+body {
+    font-family: 'Montserrat-Black', sans-serif;
+    text-align: center;
+    background-color: #CAF0F8;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Montserrat-Bold', sans-serif;
+}
+
+p {
+    color: #8f8f8f;
+}
+
+
+/* Heading */
+
+.big-heading {
+    font-family: 'Montserrat-Black', sans-serif;
+    font-size: 3.5rem;
+    line-height: 1.5;
+    font-weight: 900;
+    text-shadow: 2px 2px 4px #00B4D8;
+}
+
+.section-heading {
+    font-size: 3rem;
+    line-height: 1.5;
+    font-weight: 700;
+}
+
+.container-fluid {
+    padding: 3% 15% 0%;
+}
+
+textarea {
+    resize: none;
+}
+
+/* Navigation Bar */
+
+.navbar{
+    padding-bottom: 4.5rem;
+}
+
+.navbar-brand {
+    font-family: "Ubuntu";
+    font-size: 2.5rem;
+    font-weight: bold;
+
+}
+
+.navbar-dark .navbar-brand {
+    color: #00B4D8;
+}
+
+.navbar-dark .navbar-brand:hover {
+    color: #03045E;
+}
+
+.nav-item {
+    padding: 0 10px;
+}
+
+.nav-item .btn {
+    background-color: #00B4D8;
+    font-size: 1.2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    margin-top: 3px;
+    border: none;
+    padding:4px 12px;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #00B4D8;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #03045E;
+}
+
+.nav-link {
+    font-size: 1.2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+}
+
+.link-button a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.link-button a:hover{
+    text-decoration: none;
+    color: #03045E;
+}
+
+.navbar-dark .navbar-toggler {
+    color: #00B4D8;
+}
+
+/* Form */
+
+form {
+    border: 2px solid #00B4D8;
+    border-radius: 5px;
+    box-shadow: 10px 7px #90d7e6;
+}
+
+form .btn{
+    background-color: #00B4D8;
+    border: none;
+    margin-bottom: 10px;
+}
+
+#msg {
+    margin: auto;
+}
+
+#msg {
+    padding-left: 1.5rem;
+}
+.image{
+    border-radius: 10%;
+    box-shadow: 6px 6px 6px #71b7c5;
+}
+
+
+.form-control{
+    background-color: whitesmoke;
+}
+
+#contactNum{
+    background-color: white;
+}
+
+/* Footer Section */
+
+#footer {
+    background-color: #CAF0F8;
+}
+
+.footer-icon {
+    margin: 20px 10px;
+    color: black;
+}

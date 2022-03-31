@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html xmlns:th="https://thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -8,6 +8,10 @@
     <title>Dashboard</title>
 </head>
 <body>
-<h1> Dashboard Page !!!</h1>
+    <h1> Dashboard Page !!!</h1>
+    <br>
+    <div> The user id is
+        <span th:text="${session.user_id}"></span>
+    </div>
 </body>
 </html>
