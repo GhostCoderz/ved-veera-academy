@@ -108,27 +108,14 @@
 		<finalName>ved-veera-academy-exe</finalName>
 
 	</build>
-<!--	<distributionManagement>-->
-<!--		<repository>-->
-<!--			<uniqueVersion>false</uniqueVersion>-->
-<!--			<id>corp1</id>-->
-<!--			<name>Corporate Repository</name>-->
-<!--			<url>scp://repo/maven2</url>-->
-<!--			<layout>default</layout>-->
-<!--		</repository>-->
-<!--	</distributionManagement>-->
 
-<!--		For Jenkins:  -->
-<!--	<distributionManagement>-->
-<!--		<repository>-->
-<!--			<id>releases</id>-->
-<!--			<url>http://domain:port/content/repositories/releases</url>-->
-<!--		</repository>-->
-<!--		<snapshotRepository>-->
-<!--			<id>snapshots</id>-->
-<!--			<url>http://domain:port/content/repositories/snapshots</url>-->
-<!--		</snapshotRepository>-->
-<!--	</distributionManagement>-->
+	<distributionManagement>
+		<repository>
+			<id>ved-asole-my-spring-projects-repository</id>
+			<name>ved-asole-my-spring-projects-repository</name>
+			<url>https://ved-asole-615968906786.d.codeartifact.ap-south-1.amazonaws.com/maven/my-spring-projects-repository/</url>
+		</repository>
+	</distributionManagement>
 
 <!--	<distributionManagement>-->
 <!--		<repository>-->
